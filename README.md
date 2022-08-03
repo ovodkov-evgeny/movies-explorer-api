@@ -9,4 +9,4 @@ Backend написан с помощью фреймворка Express. База 
 https://api.oe.movies.nomoredomains.sbs
 
 ## Публичный IP-адрес сервера
-158.160.2.200
+62.84.120.208
