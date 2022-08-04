@@ -2,6 +2,7 @@ const { Schema, model } = require('mongoose');
 const { isEmail } = require('validator');
 const bcrypt = require('bcryptjs');
 const UnauthorizedError = require('../errors/UnauthorizedError');
+const { WRONG_DATA_MSG } = require('../utils/constants');
 
 const user = new Schema({
   email: {
@@ -25,16 +26,14 @@ const user = new Schema({
 }, { versionKey: false });
 
 user.statics.findUserByCredentials = function findUserByCredentials({ email, password }) {
-  const errorMessage = 'Неправильные почта или пароль';
-
   return this.findOne({ email }).select('+password').then((data) => {
     if (!data) {
-      return Promise.reject(new UnauthorizedError(errorMessage));
+      return Promise.reject(new UnauthorizedError(WRONG_DATA_MSG));
     }
 
     return bcrypt.compare(password, data.password).then((matched) => {
       if (!matched) {
-        return Promise.reject(new UnauthorizedError(errorMessage));
+        return Promise.reject(new UnauthorizedError(WRONG_DATA_MSG));
       }
       return data;
     });

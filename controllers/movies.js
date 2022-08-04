@@ -2,7 +2,7 @@ const Movie = require('../models/movie');
 const ForbiddenError = require('../errors/ForbiddenError');
 const NotFoundError = require('../errors/NotFoundError');
 
-const { DATA_NOT_FOUND_MSG, DELETE_FORBIDDEN_MSG } = require('../utils/constants');
+const { DATA_NOT_FOUND_MSG, DELETE_FORBIDDEN_MSG, MOVIE_DELETED_MSG } = require('../utils/constants');
 
 module.exports.getMovies = (req, res, next) => {
   Movie.find({ owner: req.user._id })
@@ -29,8 +29,8 @@ module.exports.deleteMovie = (req, res, next) => {
         throw new ForbiddenError(DELETE_FORBIDDEN_MSG);
       }
 
-      return Movie.findByIdAndDelete(movie._id)
-        .then((deleted) => res.send(deleted));
+      return movie.remove()
+        .then(() => res.send({ message: MOVIE_DELETED_MSG }));
     })
     .catch(next);
 };

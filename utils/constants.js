@@ -9,9 +9,11 @@ const GREETINGS_MSG = 'Добро пожаловать в REST API прилож�
 const SIGNIN_MSG = 'Успешный вход';
 const SIGNOUT_MSG = 'Успешный выход';
 const UNAUTH_MSG = 'Необходима авторизация';
+const WRONG_DATA_MSG = 'Неправильные почта или пароль';
 const DATA_NOT_FOUND_MSG = 'Данные не найдены';
 const PATH_NOT_FOUND_MSG = 'Некорректный путь запроса';
 const DELETE_FORBIDDEN_MSG = 'Нельзя удалять чужие фильмы';
+const MOVIE_DELETED_MSG = 'Фильм удалён';
 const EMAIL_EXIST_MSG = 'Email уже зарегистрирован';
 const DEFAUTL_MSG = 'На сервере произошла ошибка';
 
@@ -25,9 +27,11 @@ module.exports = {
   SIGNIN_MSG,
   SIGNOUT_MSG,
   UNAUTH_MSG,
+  WRONG_DATA_MSG,
   DATA_NOT_FOUND_MSG,
   PATH_NOT_FOUND_MSG,
   DELETE_FORBIDDEN_MSG,
+  MOVIE_DELETED_MSG,
   EMAIL_EXIST_MSG,
   DEFAUTL_MSG,
   GREETINGS_MSG,
